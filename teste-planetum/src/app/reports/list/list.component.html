@@ -10,23 +10,21 @@
   <mat-card>
     <mat-card-content>
       <div class="button-container">
-        <button mat-raised-button color="primary">Novo</button>
+        <button mat-raised-button color="primary" (click)="CreateRow()">Novo</button>
       </div>
       <table class="mat-table">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Broker Code</th>
-            <th>Product Code</th>
-            <th>Product</th>
+            <th>Status</th>
+            <th>Observation</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let i of dataSource">
-            <td>{{ i.Id }}</td>
-            <td>{{ i.brokerCode }}</td>
-            <td>{{ i.productCode }}</td>
-            <td>{{ i.productName }}</td>
+          <tr *ngFor="let item of dataSource" (click)="EditRow(item.Id)">
+            <td>{{ item.Id }}</td>
+            <td>{{ item.status }}</td>
+            <td>{{ item.observation }}</td>
           </tr>
         </tbody>
       </table>

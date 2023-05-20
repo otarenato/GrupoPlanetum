@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { Inspection } from 'src/app/models/inspection.model';
 import { PlanetumService } from 'src/app/services/planetum.service';
 
 @Component({
@@ -8,10 +10,21 @@ import { PlanetumService } from 'src/app/services/planetum.service';
 })
 export class InspectionsComponent implements OnInit {
 
-  constructor(private _service: PlanetumService) { }
+  displayedColumns: string[] = ['Id', 'productCode'];
+  dataSource: Inspection[] = [];
+
+  constructor(private _service: PlanetumService) {
+
+
+
+  }
 
   ngOnInit(): void {
-    this._service.loadSessionStorage();
+    this.loadGrid();
+  }
+
+  loadGrid(): void {
+    this.dataSource = <Inspection[]>JSON.parse(sessionStorage.getItem("BDInspection") || "[]");
   }
 
 }

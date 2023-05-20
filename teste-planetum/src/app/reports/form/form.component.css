@@ -1,0 +1,22 @@
+.container-menu {
+  padding: 20px 0 20px 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.minimum-width {
+  display: none;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}

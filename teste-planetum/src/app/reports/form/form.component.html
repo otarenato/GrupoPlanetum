@@ -1,0 +1,33 @@
+<div class="minimum-width">
+  Tamanho de tela não suportado
+</div>
+
+<div class="container">
+  <div class="container-menu">
+    <button mat-raised-button [routerLink]="['/inspections']">Inspections</button>
+    <button mat-raised-button [routerLink]="['/reports/list']">Reports</button>
+    <button mat-raised-button [routerLink]="['/']">Logout</button>
+  </div>
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="form">
+        <mat-grid-list cols="4">
+          <mat-grid-tile colspan="1" rowspan="1">
+            <mat-form-field [style.width.%]="90">
+              <input type="text" matInput placeholder="Status" formControlName="status">
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="3" rowspan="1">
+            <mat-form-field [style.width.%]="90">
+              <input type="text" matInput placeholder="Observation" formControlName="observation">
+            </mat-form-field>
+          </mat-grid-tile>
+        </mat-grid-list>
+        <div class="button">
+          <button type="button" *ngIf="isCreate" mat-raised-button color="primary" (click)="CreateItem()">Cadastrar</button>
+          <button type="button" *ngIf="!isCreate" mat-raised-button color="primary" (click)="UpdateItem()">Alterar</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
