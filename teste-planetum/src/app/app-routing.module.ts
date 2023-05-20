@@ -9,7 +9,7 @@ import { ListComponent } from './reports/list/list.component';
 const routes: Routes = [
   { path: '', component: AuthComponent },
   { path: 'login', component: AuthComponent },
-  { path: 'inspections', component: InspectionsComponent, canActivate: [AuthGuard] },
+  { path: 'inspections/list', component: InspectionsComponent, canActivate: [AuthGuard] },
   { path: 'reports/list', component: ListComponent, canActivate: [AuthGuard] },
   { path: 'reports/create', component: FormComponent, canActivate: [AuthGuard] },
   { path: 'reports/edit', component: FormComponent, canActivate: [AuthGuard] },

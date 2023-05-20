@@ -25,7 +25,7 @@ export class AuthComponent implements OnInit {
     if (this.form.valid && this.form.controls["username"].value == "admin" && this.form.controls["password"].value == "123") {
       sessionStorage.setItem("isLogged", "true");
       this.service.loadSessionStorage();
-      this.router.navigate(['/inspections']);
+      this.router.navigate(['/inspections/list']);
     } else {
       sessionStorage.setItem("isLogged", "false");
     }
