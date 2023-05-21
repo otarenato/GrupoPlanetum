@@ -1,0 +1,70 @@
+<div class="minimum-width">
+  Tamanho de tela não suportado
+</div>
+<div class="container">
+  <div class="container-menu">
+    <button mat-raised-button [routerLink]="['/inspections/list']">Inspections</button>
+    <button mat-raised-button [routerLink]="['/reports/list']">Reports</button>
+    <button mat-raised-button [routerLink]="['/']">Logout</button>
+  </div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Inspections</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="form">
+        <div class="form-content">
+          <div class="div-form-field">
+            <mat-form-field [style.width.%]="100">
+              <input type="text" matInput placeholder="Company ID" formControlName="companyId">
+            </mat-form-field>
+          </div>
+          <div class="div-form-field">
+            <mat-form-field [style.width.%]="100">
+              <input type="text" matInput placeholder="Broker Code" formControlName="brokerCode">
+            </mat-form-field>
+          </div>
+
+        </div>
+        <div class="form-content">
+          <div class="div-form-field">
+            <mat-form-field [style.width.%]="100">
+              <input type="text" matInput placeholder="Product Code" formControlName="prductCode">
+            </mat-form-field>
+          </div>
+          <div class="div-form-field">
+            <mat-form-field [style.width.%]="100">
+              <input type="text" matInput placeholder="Product Name" formControlName="productName">
+            </mat-form-field>
+          </div>
+        </div>
+
+      </form>
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" *ngIf="isCreate">Cadastrar</button>
+        <button mat-raised-button color="primary" *ngIf="!isCreate" (click)="UpdateItem()">Atualizar</button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="card-report">
+    <mat-card-header>
+      <mat-card-title>Reports</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table class="mat-table">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Observation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listReport">
+            <td>{{ item.status }}</td>
+            <td>{{ item.observation }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

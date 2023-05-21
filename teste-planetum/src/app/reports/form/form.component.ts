@@ -15,12 +15,14 @@ export class FormComponent implements OnInit {
   _id: any;
   list: Report[] = new Array<Report>();
   item: Report = new Report();
+
+
+  constructor(private formBuilder: FormBuilder, private router: Router, private _activatedRoute: ActivatedRoute) { }
+
   form = this.formBuilder.group({
     status: [''],
     observation: ['']
   });
-
-  constructor(private formBuilder: FormBuilder, private router: Router, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.path = this._activatedRoute.snapshot.url.join('/');

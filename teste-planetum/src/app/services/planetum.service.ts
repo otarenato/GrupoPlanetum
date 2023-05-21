@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Inspection } from '../models/inspection.model';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Report } from '../models/report.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +17,27 @@ export class PlanetumService {
   private reportObj = [
     {
       "Id": 1,
+      "companyId": "001",
       "status": "A",
       "observation": "xpto"
     },
     {
       "Id": 2,
+      "companyId": "001",
       "status": "B",
       "observation": "xpto2"
+    },
+    {
+      "Id": 3,
+      "companyId": "100",
+      "status": "X",
+      "observation": "Lorem ipsum..."
+    },
+    {
+      "Id": 4,
+      "companyId": "100",
+      "status": "Y",
+      "observation": "Lorem Ipsum 2"
     }
   ];
 
@@ -67,5 +82,14 @@ export class PlanetumService {
   get(): Observable<Inspection[]> {
     const listInspection = sessionStorage.getItem('BDInspection') || '[]';
     return this.http.get(listInspection).pipe(map((response: any) => response.json()));
+  }
+
+  getInspectionById(id: number): Inspection {
+    const listInspection = <Inspection[]>JSON.parse(sessionStorage.getItem('BDInspection') || "[]");
+    const listReport = <Report[]>JSON.parse(sessionStorage.getItem('BDReport') || "[]");
+    let itemInspection = <Inspection>listInspection.find(x => x.Id == id);
+    let filteredReports = <Report[]>listReport.filter(r => r.companyId === itemInspection.companyId);
+    itemInspection.reports = filteredReports;
+    return itemInspection;
   }
 }
